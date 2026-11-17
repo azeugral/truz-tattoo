@@ -46,7 +46,8 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
 .hero-in{position:relative;z-index:1;width:min(1180px,100% - 40px);margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .hero-sup{font-size:15px;letter-spacing:.06em;color:var(--osso2);margin-bottom:22px}
-.quadro{position:relative;width:min(380px,72vw,38vh);aspect-ratio:4/5;padding:12px;border:1px solid var(--linha);background:#0a0a09}
+.hero::before{content:"";position:absolute;left:50%;top:0;width:min(900px,140vw);height:78%;transform:translateX(-50%);background:radial-gradient(ellipse 38% 70% at 50% 0%,rgba(236,230,218,.075),transparent 72%),linear-gradient(180deg,rgba(184,146,63,.05),transparent 60%);clip-path:polygon(38% 0,62% 0,86% 100%,14% 100%);pointer-events:none}
+.quadro{position:relative;width:min(430px,72vw,44vh);box-shadow:0 30px 80px rgba(0,0,0,.55);aspect-ratio:4/5;padding:12px;border:1px solid var(--linha);background:#0a0a09}
 .quadro-img{position:relative;width:100%;height:100%;overflow:hidden;background:#111}
 .quadro-img img{width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;will-change:transform}
 .canto{position:absolute;width:18px;height:18px;border-color:var(--ouro);border-style:solid;border-width:0}
@@ -55,10 +56,15 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 .c3{bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px}
 .c4{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px}
 .nome{font-size:clamp(96px,15vw,180px);font-weight:700;line-height:.8;margin-top:-.42em;position:relative;z-index:2;color:var(--osso);letter-spacing:.01em;text-shadow:0 6px 30px rgba(0,0,0,.65)}
-.peca{margin-top:16px;color:var(--ouro2);font-size:15px;font-weight:600;letter-spacing:.06em;min-height:1.6em;transition:opacity .3s var(--ease)}
+.placa{margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:260px}
+.peca{color:var(--ouro2);font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.peca::before,.peca::after{content:"";width:28px;height:1px;background:var(--ouro);opacity:.7}
+.det{color:var(--osso2);font-size:14px;letter-spacing:.04em;min-height:1.5em}
+.fio{display:block;width:180px;height:1px;margin-top:8px;background:rgba(236,230,218,.14);overflow:hidden}
+.fio i{display:block;height:100%;background:var(--ouro);transform:scaleX(0);transform-origin:0 50%}
 .hero-txt{max-width:500px;margin-top:10px;color:var(--osso2)}
-.hero-sup,.nome,.peca,.hero-txt,.btns{animation:sobe .8s var(--ease) both}
-.nome{animation-delay:.1s}.peca{animation-delay:.2s}.hero-txt{animation-delay:.25s}.btns{animation-delay:.3s}
+.hero-sup,.nome,.placa,.hero-txt,.btns{animation:sobe .8s var(--ease) both}
+.nome{animation-delay:.1s}.placa{animation-delay:.2s}.hero-txt{animation-delay:.25s}.btns{animation-delay:.3s}
 @keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* adornos */
@@ -170,7 +176,10 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
   .nav a{font-size:14px}
   .marca img{height:96px}
   .hero{padding:140px 0 70px}
-  .quadro{width:min(330px,76vw);padding:9px}
+  .quadro{width:min(360px,86vw);padding:9px}
+  .peca{font-size:14px;gap:10px}
+  .peca::before,.peca::after{width:18px}
+  .fio{width:140px}
   .btns{flex-direction:column;width:100%;max-width:340px}
   .btns .btn{width:100%}
   .sec{padding:80px 0}
@@ -204,7 +213,20 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
   .hero-sup{margin-bottom:16px}
   .quadro{width:min(380px,72vw,31vh)}
   .nome{font-size:clamp(96px,11vw,140px)}
-  .peca{margin-top:12px}
+  .placa{margin-top:12px}
   .btns{margin-top:22px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
+/* hero em telas de notebook (largas e baixas): quadro à direita, nome cruzando a borda */
+@media (min-width:1100px) and (max-height:900px){
+  .hero{padding:150px 0 64px;--qw:calc(min(64vh,600px) * .8)}
+  .hero::before{left:calc(50% + min(550px,50vw - 40px) - var(--qw) / 2 - 12px);height:92%}
+  .hero-in{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:0;justify-items:end;text-align:right;width:min(1100px,100% - 80px);
+    grid-template-areas:". q" "sup q" "nome q" "txt q" "btns q" ". q" ". placa";grid-template-rows:1fr auto auto auto auto 1fr auto}
+  .hero-sup{grid-area:sup;margin:0 56px 6px 0}
+  .quadro{grid-area:q;width:var(--qw)}
+  .nome{grid-area:nome;margin:0 -.34em 0 0;font-size:clamp(130px,12vw,190px)}
+  .hero-txt{grid-area:txt;margin:22px 56px 0 0;max-width:420px}
+  .btns{grid-area:btns;margin:28px 56px 0 0;justify-content:flex-end}
+  .placa{grid-area:placa;justify-self:center;margin-top:16px}
+}

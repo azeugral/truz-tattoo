@@ -4,20 +4,21 @@ var WA='5567998135638';
 
 /* HERO: cada peça abre num detalhe da sombra e afasta até o fechamento inteiro */
 var HP=[
-  {src:'img/h/costas.webp',peca:'Fechamento de costas',alt:'Fechamento de costas com caveira e serpente em preto e cinza',fx:.56,fy:.16,z:3.4},
-  {src:'img/h/braco.webp',peca:'Fechamento de braço',alt:'Braço fechado em realismo preto e cinza',fx:.64,fy:.25,z:3.2},
-  {src:'img/h/pescoco.webp',peca:'Fechamento de pescoço',alt:'Fechamento de pescoço em preto e cinza',fx:.46,fy:.55,z:3.2},
-  {src:'img/h/perna.webp',peca:'Fechamento de perna',alt:'Perna fechada com Cristo e Nossa Senhora',fx:.33,fy:.3,z:3.2}
+  {src:'img/h/costas.webp',peca:'Fechamento de costas',det:'caveira e serpente',alt:'Fechamento de costas com caveira e serpente em preto e cinza',fx:.56,fy:.16,z:3.4},
+  {src:'img/h/braco.webp',peca:'Fechamento de braço',det:'leão e rosa',alt:'Fechamento de braço com leão e rosa em preto e cinza',fx:.64,fy:.25,z:3.2},
+  {src:'img/h/pescoco.webp',peca:'Pescoço',det:'preto e cinza',alt:'Tatuagem no pescoço em preto e cinza',fx:.46,fy:.55,z:3.2},
+  {src:'img/h/perna.webp',peca:'Perna',det:'caveira com cocar',alt:'Caveira com cocar na perna em preto e cinza',fx:.5,fy:.8,z:3}
 ];
-var hImg=document.getElementById('hImg'),hPeca=document.getElementById('hPeca');
+var hImg=document.getElementById('hImg'),hPeca=document.getElementById('hPeca'),hDet=document.getElementById('hDet'),hFio=document.getElementById('hFio');
 var pre=HP.map(function(p){var i=new Image();i.src=p.src;return i});
 var hi=0,anim=null;
 var reduz=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function abrirPeca(k){
   var p=HP[k];
   hImg.src=p.src;hImg.alt=p.alt;
-  hPeca.textContent=p.peca;
+  hPeca.textContent=p.peca;hDet.textContent=p.det;
   if(reduz||!hImg.animate)return;
+  hFio.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:4800,easing:'linear',fill:'forwards'});
   var lim=(p.z-1)/(2*p.z)*100,cl=function(n){return Math.max(-lim,Math.min(lim,n))};
   var tx=cl((.5-p.fx)*100), ty=cl((.5-p.fy)*100);
   if(anim)anim.cancel();
@@ -38,46 +39,44 @@ setInterval(function(){
 
 /* TRABALHOS */
 var P=[
- ['DAGm4IgRZGO_0','fech','Fechamento de costas com caveira'],
+ ['DAGm4IgRZGO_0','fech','Fechamento de costas com caveira e serpente'],
  ['C1pG8jFO1JE_0','real','Leão com coroa de espinhos no ombro'],
  ['CsGr8QBLAwj_0','ret','Retrato realista em preto e cinza'],
- ['CsEHPBIuj-d_0','fech','Braço fechado do ombro ao punho'],
+ ['CsEHPBIuj-d_0','fech','Fechamento de braço com leão e rosa'],
  ['C22YGRTuKdp_0','rel','Cristo com coroa de espinhos no ombro'],
- ['CsjJsKyO-2f_1','real','Medusa no peito'],
- ['DAHh4-1NBfL_0','fech','Fechamento de pescoço'],
+ ['CsjJsKyO-2f_1','real','Medusa em preto e cinza'],
+ ['DAHh4-1NBfL_0','real','Tatuagem no pescoço em preto e cinza'],
+ ['CxDgQc1Oq0O_0','fech','Fechamento de braço com lobo e mulher'],
  ['Ct_n5KFuU7U_0','ret','Retrato de rapper com microfone'],
- ['CdIL2e0uHuY_3','fech','Antebraço fechado com gladiador'],
+ ['CdIL2e0uHuY_3','real','Gladiador no antebraço'],
  ['C1wg6A5Ij59_0','rel','Cristo no antebraço'],
  ['Ch53UMENJMA_0','fina','Lírio fine line com escrita'],
- ['CxZCrGQNLct_0','fech','Costas com retrato chicano'],
- ['C14WL-fvsYZ_0','real','Leão no antebraço'],
- ['CsB21y4umL-_0','ret','Retrato chicano com bandana'],
- ['Cy5-5DsOjhX_0','fech','Perna com Cristo e Nossa Senhora'],
+ ['CxZCrGQNLct_0','fech','Fechamento de costas em andamento'],
+ ['C14WL-fvsYZ_0','real','Leão realista no antebraço'],
+ ['CsB21y4umL-_0','real','Tatuagem chicana em preto e cinza'],
+ ['Cy5-5DsOjhX_0','rel','Cristo e Nossa Senhora'],
  ['CthWJQOR6XP_0','rel','Cristo com terço'],
  ['Ciu1YBcOzzg_1','fina','Borboleta fine line'],
- ['C22tjj4xG7__0','fech','Braço fechado com escrita'],
- ['CxDgQc1Oq0O_0','real','Lobo e mulher no braço'],
+ ['C22tjj4xG7__0','fech','Fechamento de braço com escrita'],
+ ['Cw2zRa2OHvZ_0','fech','Elefante no antebraço, homenagem ao filho'],
  ['DRhSv9iDmEK_0','ret','Retrato de mãe na cabeça'],
  ['C10KWoJpJNR_2','real','Olho realista'],
- ['CzljG7fOL_Q_0','fech','Antebraço com rosas e relógio'],
- ['Cw2zRa2OHvZ_0','real','Elefante na perna'],
+ ['CzljG7fOL_Q_0','fech','Fechamento de braço com rosas e relógio'],
  ['DAHySUENS5g_0','fina','Ramo fine line nas costas'],
  ['CikQVrgOPVf_0','rel','Leão com cruz no ombro'],
- ['C1pOAPotlnr_0','fech','Pescoço fechado'],
  ['CcEjav2tmQ-_0','real','Leoa e filhotes com flores'],
  ['C1reMXANoOv_0','ret','Retrato de cachorro'],
- ['CzpUNAfxcZp_0','real','Anjo e máscaras no peito'],
- ['C2zpWMwOsHM_0','fech','Antebraço com dragão'],
- ['CxNzbNxObFv_0','real','Mapa e bússola no peito'],
- ['CcJoZDBMD18_0','fina','Mandala pontilhada na mão'],
- ['C3acuF-uNM7_0','real','Escorpião'],
- ['CevsElfOd-__0','fech','Peito fechado'],
- ['C0R-PmUx_S4_0','ret','Costas com personagens'],
- ['Cby9WJ4O-kP_0','fech','Antebraço fechado'],
- ['CikRPmAuFcW_0','fina','Borboleta no braço'],
- ['C1uXlfJB3GL_0','fech','Braço fechado com relógio'],
+ ['CxNzbNxObFv_0','fech','Peito com mapa e bússola'],
+ ['C2zpWMwOsHM_0','real','Cobertura no antebraço'],
+ ['CzpUNAfxcZp_0','real','Anjo e máscaras de teatro'],
+ ['C3acuF-uNM7_0','real','Escorpião feito à mão livre'],
+ ['CevsElfOd-__0','real','Peito em andamento'],
+ ['C0R-PmUx_S4_0','real','Personagens de desenho nas costas'],
+ ['Cby9WJ4O-kP_0','real','Caveira com cocar na perna'],
+ ['CikRPmAuFcW_0','fina','Borboleta delicada no braço'],
+ ['C1uXlfJB3GL_0','real','Braço com bússola, coroa e relógio'],
  ['Czo3UAvR4o2_0','real','Bússola no antebraço'],
- ['CxV3suzx4Kc_0','fina','Peças pequenas no braço']
+ ['CxV3suzx4Kc_0','fina','Símbolos pequenos no braço']
 ];
 var NOME={fech:'Fechamento',real:'Realismo',rel:'Religioso',ret:'Retrato',fina:'Fine line e escrita'};
 var grade=document.getElementById('grade'),mais=document.getElementById('mais');
