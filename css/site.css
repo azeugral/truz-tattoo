@@ -23,12 +23,13 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 
 /* nav */
 .nav{position:absolute;top:0;left:0;right:0;z-index:20}
-.nav-in{width:min(1180px,100% - 40px);margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 0}
+.nav-in{width:min(1180px,100% - 40px);margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 0}
 .nav-l,.nav-r{display:flex;gap:30px}
 .nav-r{justify-content:flex-end}
 .nav a{text-decoration:none;font-size:15px;font-weight:500;letter-spacing:.02em;color:var(--osso2);transition:color .3s var(--ease)}
 .nav a:hover{color:var(--osso)}
-.marca img{height:62px;width:auto}
+.marca{display:block;padding:4px 0}
+.marca img{height:128px;width:auto;filter:drop-shadow(0 4px 18px rgba(0,0,0,.6))}
 
 /* botões */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;font:600 16px/1 var(--txt);letter-spacing:.02em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
@@ -41,11 +42,11 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 .btns .btn{min-width:210px}
 
 /* hero */
-.hero{position:relative;overflow:hidden;padding:104px 0 90px;text-align:center;background:radial-gradient(ellipse 60% 55% at 50% 42%,#1d1c19 0%,var(--bg) 70%)}
+.hero{position:relative;overflow:hidden;padding:168px 0 90px;text-align:center;background:radial-gradient(ellipse 60% 55% at 50% 42%,#1d1c19 0%,var(--bg) 70%)}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
 .hero-in{position:relative;z-index:1;width:min(1180px,100% - 40px);margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .hero-sup{font-size:15px;letter-spacing:.06em;color:var(--osso2);margin-bottom:22px}
-.quadro{position:relative;width:min(380px,72vw,41vh);aspect-ratio:4/5;padding:12px;border:1px solid var(--linha);background:#0a0a09}
+.quadro{position:relative;width:min(380px,72vw,38vh);aspect-ratio:4/5;padding:12px;border:1px solid var(--linha);background:#0a0a09}
 .quadro-img{position:relative;width:100%;height:100%;overflow:hidden;background:#111}
 .quadro-img img{width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;will-change:transform}
 .canto{position:absolute;width:18px;height:18px;border-color:var(--ouro);border-style:solid;border-width:0}
@@ -136,7 +137,7 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 .aviso{margin-top:4px;text-align:center;color:var(--ouro2);font-weight:500}
 
 .rodape{text-align:center;padding:70px 20px 50px;border-top:1px solid var(--linha);color:var(--osso2);font-size:15px}
-.rodape img{height:90px;width:auto;margin:0 auto 18px}
+.rodape img{height:150px;width:auto;margin:0 auto 18px}
 .rodape p{margin-top:6px}
 .rodape a{text-decoration:none;border-bottom:1px solid var(--linha)}
 .rodape .lrgz{margin-top:26px;font-size:13px}
@@ -169,8 +170,8 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
   .so-desk{display:none!important}
   .nav-l.so-desk{display:flex!important;visibility:hidden}
   .nav a{font-size:14px}
-  .marca img{height:50px}
-  .hero{padding:96px 0 70px}
+  .marca img{height:96px}
+  .hero{padding:140px 0 70px}
   .quadro{width:min(330px,76vw);padding:9px}
   .btns{flex-direction:column;width:100%;max-width:340px}
   .btns .btn{width:100%}
@@ -199,5 +200,14 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 @media (max-width:380px){
   .nav-in{width:calc(100% - 24px)}
   .passos3{grid-template-columns:1fr}
+}
+@media (min-width:641px) and (max-height:860px){
+  .marca img{height:112px}
+  .hero{padding-top:146px}
+  .hero-sup{margin-bottom:16px}
+  .quadro{width:min(380px,72vw,31vh)}
+  .nome{font-size:clamp(96px,11vw,140px)}
+  .peca{margin-top:12px}
+  .btns{margin-top:22px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
