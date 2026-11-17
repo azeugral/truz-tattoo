@@ -79,7 +79,7 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 .sec-osso{background:var(--bg2)}
 .areas{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
 .area{text-decoration:none;text-align:center;display:block}
-.area img,.passos3 img,.dupla img,.grade img{aspect-ratio:4/5;object-fit:cover;width:100%;-webkit-user-drag:none}
+.area img,.passos3 img,.grade img{aspect-ratio:4/5;object-fit:cover;width:100%;-webkit-user-drag:none}
 .area img{transition:transform .3s var(--ease),filter .3s var(--ease);filter:grayscale(.15)}
 .area:hover img{filter:none}
 .area h3{margin-top:16px}
@@ -99,8 +99,6 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
 .grade button:hover img{transform:scale(1.03)}
 .mais{display:flex;width:fit-content;margin:34px auto 0}
 
-.dupla{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:54px auto 0;max-width:900px}
-.sec-rap{background:linear-gradient(180deg,var(--bg),#13110c 50%,var(--bg))}
 
 .sobre{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1000px}
 .sobre-foto{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--linha);padding:10px}
@@ -183,8 +181,7 @@ body::before{content:"";position:fixed;inset:0;background:url(../img/grao.png);o
   .grade{grid-template-columns:1fr 1fr;gap:8px}
   .filtros{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
   .filtros button{padding:12px 4px;font-size:14px}
-  .dupla{gap:10px}
-  .info{grid-template-columns:1fr}
+    .info{grid-template-columns:1fr}
   .passos{gap:10px}
   .passos li{padding:18px 12px}
   .passos h3{font-size:22px}

@@ -154,6 +154,6 @@ form.nome.addEventListener('input',function(){if(form.nome.value.trim())form.que
 /* entrada leve ao rolar */
 if('IntersectionObserver' in window&&!reduz){
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('vis');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.sec h2,.sec .lead,.areas,.passos3,.dupla,.sobre,.mapa,.info,.passos,.form').forEach(function(el){el.classList.add('rev');io.observe(el)});
+  document.querySelectorAll('.sec h2,.sec .lead,.areas,.passos3,.sobre,.mapa,.info,.passos,.form').forEach(function(el){el.classList.add('rev');io.observe(el)});
 }
 })();
